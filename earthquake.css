@@ -1,0 +1,26 @@
+/* Set the size of the div element that contains the map */
+body {
+    height: 100vh;
+    display: flex;
+}
+
+.app-container{
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 1 0 auto;
+}
+
+section.stretch {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+aside.sidebar{
+    flex: 300px 0 auto;
+    display: none;
+}
+
+div#map {
+    flex: auto;
+}
