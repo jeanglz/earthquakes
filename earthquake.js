@@ -41,7 +41,7 @@ function initMap() {
                 alert("No earthquakes found");
             }else{
                 // Add a marker for each earthquake
-                data.earthquakes.forEach(e => addMarker(e));
+                data.earthquakes.slice(-10).forEach(e => addMarker(e));
             }
         })
         .fail(function() {
@@ -60,7 +60,21 @@ function initMap() {
             position: { lat: earthquake.lat, lng: earthquake.lng },
             map: map,
             title: 'Earthquake datetime: '+ earthquake.datetime
-          });
+        });
+
+        let formattedDate = new Date(earthquake.datetime);
+        let infowindow = new google.maps.InfoWindow({
+            content: `<h6><b>Date of earthquake:</b> ${formattedDate}</h6>
+                <h6><b>Depth:</b> ${earthquake.depth}</h6>
+                <h6><b>Lat:</b> ${earthquake.lat}</h6>
+                <h6><b>Lng:</b> ${earthquake.lng}</h6>
+                <h6><b>Magnitude:</b> ${earthquake.magnitude}</h6>`
+        });
+
+        marker.addListener('click', function() {
+            infowindow.open(map, marker);
+        });
+
         markers.push(marker);
     }
 }
