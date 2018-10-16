@@ -24,6 +24,12 @@ aside.sidebar{
     flex: 0 0 300px;
 }
 
+aside.sidebar h4 {
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 20px 5px;
+}
+
 div#map {
     flex: auto;
 }
@@ -34,6 +40,13 @@ div#map {
 
 #largest-eqs-list {
     list-style: none;
-    padding: 0;
+    padding: 20px 0px;
     margin: 0;
+}
+
+#largest-eqs-list li {
+    padding: 0 10px;
+    font-size: .8rem;
+    border-bottom: 1px gray solid;
+
 }
