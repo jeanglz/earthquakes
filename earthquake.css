@@ -29,6 +29,6 @@ div#map {
     flex: auto;
 }
 
-form.searchbox {
+.searchbox {
     width: 100%;
 }

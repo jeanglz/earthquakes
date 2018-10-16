@@ -64,4 +64,3 @@ function initMap() {
         markers.push(marker);
     }
 }
-
