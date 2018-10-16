@@ -21,8 +21,7 @@ section.stretch {
 }
 
 aside.sidebar{
-    flex: 300px 0 auto;
-    display: none;
+    flex: 0 0 300px;
 }
 
 div#map {
@@ -31,4 +30,10 @@ div#map {
 
 .searchbox {
     width: 100%;
+}
+
+#largest-eqs-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }

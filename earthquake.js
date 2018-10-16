@@ -78,3 +78,40 @@ function initMap() {
         markers.push(marker);
     }
 }
+
+getLargestEarthquakes();
+
+function getLargestEarthquakes(){
+    // Get dates to limit web service results
+    let d = new Date();
+    let year = d.getFullYear();
+    let month = ('0' + (d.getMonth()+1)).slice(-2);
+    let day = d.getDate();
+    let todaysDate = year+'-'+month+'-'+day;
+    let oneYearAgo = (year-1)+'-'+month+'-'+day;
+
+    let eqsUrl = 'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime='+oneYearAgo+'&endtime='+todaysDate+'&minmagnitude=5';        
+    $.getJSON(eqsUrl, function(data) {
+        // Order earthquakes events by magnitude
+        let sortedEarthquakes = data.features.sort((a, b) => b.properties.mag - a.properties.mag);
+
+        // Get the top 10 largest earthquakes
+        let top10Largest = sortedEarthquakes.slice(0, 10);
+        
+        // Add earthquakes to list in the side bar
+        let count = 1;
+        top10Largest.forEach(e => {
+            $('#largest-eqs-list').append(
+                `<li>
+                    <a target="_blank" href="${e.properties.url}">
+                        ${count++}.- ${e.properties.place} <br>
+                    <a>
+                    <p>magnitude: ${e.properties.mag}</p>
+                </li>`);
+        });
+    })
+    .fail(function() {
+        console.log( "There was an error getting trying to retrieve the earthquakes info." );
+    });
+
+}
