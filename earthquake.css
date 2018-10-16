@@ -10,6 +10,10 @@ body {
     flex: 1 0 auto;
 }
 
+.app-container .navbar {
+    display: flex;
+}
+
 section.stretch {
     display: flex;
     flex-direction: row;
@@ -23,4 +27,8 @@ aside.sidebar{
 
 div#map {
     flex: auto;
+}
+
+form.searchbox {
+    width: 100%;
 }
